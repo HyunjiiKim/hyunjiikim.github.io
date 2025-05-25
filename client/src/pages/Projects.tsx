@@ -1,59 +1,86 @@
-interface ProjectProps {
-    title: string;
-    description: string;
-    img?: Array<string>;
-    link?: string;
-    github?: string;
-    tags?: Array<string>;
+import { useParams, Link } from "react-router";
+import type { IProjectData } from "../data/projects";
+import { ProjectData } from "../data/projects";
+
+export function ProjectList() {
+    return (
+        <div className="max-w-[1000px] mx-auto p-10">
+            <h1 className="text-3xl font-bold mb-6 text-center">All Projects</h1>
+
+            {ProjectData.map(p => (
+                <ProjectContainer key={p.id} {...p} />
+            ))}
+        </div>
+    );
 }
 
+export function ProjectDetail() {
+    const { id } = useParams<{ id: string }>();
+    const project = ProjectData.find(p => p.id === id);
 
-const ProjectContainer = ({ title, description, img, link, github, tags }: ProjectProps) => {
+    if (!project) return <p className="text-center">Project not found.</p>;
+
+    return <ProjectPage {...project} />;
+}
+
+const ProjectContainer = ({ name, summary, coverImg }: IProjectData) => {
     return (
         <div className="bg-primary-4/20 p-6 my-4 rounded-lg">
-            <h2 className="text-2xl font-bold">{title}</h2>
-            <p className="mt-2">{description}</p>
-            {img && img.map((image, index) => (
-                <img key={index} src={image} alt={title} className="my-2" />
-            ))}
-            {link && <a href={link} className="text-accent-1 underline"><i className="bi bi-link"></i>View </a>}
-            {github && <a href={github} className="text-accent-1 underline"><i className="bi bi-github"></i>Github</a>}
-            {tags && tags.map((tag, index) => (
-                <span key={index} className="bg-accent-1/20 p-1 rounded-full mr-2">{tag}</span>
-            ))}
+            <div className="flex">
+                <div id="imgContainer">
+                    <img src={coverImg} alt={name} />
+                </div>
+                <div id="TextImage">
+                    <p>{summary}</p>
+                </div>
+            </div>
+
         </div>
     );
 };
 
-const ProjectPage = ({title, description, img, link, github,tags}: ProjectProps) =>{
-    return(
-        <div>
-            <h2>{title}</h2>
+const ProjectPage = ({ name, summary, role, description, img, usedSkills, link, github, startDate, endDate }: IProjectData) => {
+    return (
+        <div className="max-w-[1000px] mx-auto p-10">
+            <h1 className="font-bold text-center text-4xl">{name}</h1>
+            <div className="text-sm">
+                {summary}
+            </div>
+            <div>
+                <p>Role : {role}</p>
+                {endDate && (
+                    <p>{startDate} - {endDate}</p>
+                )}
+            </div>
+            <div id="link-group" className="flex gap-4">
+                {link && (
+                    <div>
+                        <Link to={link} className="hover:text-primary-2">
+                            <i className="bi bi-link" />&nbsp;View
+                        </Link>
+                    </div>
+                )}
+                {github && (
+                    <div>
+                         <Link to={github} className="hover:text-primary-2">
+                            <i className="bi bi-github" />&nbsp;Github
+                        </Link>
+                    </div>
+                )}
+            </div>
             <p>{description}</p>
+            <div>
+                <h3 className="text-xl font-bold">Skills</h3>
+                <div className="flex gap-2 flex-wrap">
+                    {usedSkills.map((it) => (
+                        <div className="p-2 rounded-full bg-primary-3 text-white w-fit capitalize">{it}</div>
+                    ))}
+                </div>
+
+            </div>
             {img && img.map((image, index) => (
-                <img key={index} src={image} alt={title} className="my-2" />
+                <img key={index} src={image} alt={name} className="my-2" />
             ))}
-            <i className="bi bi-github" />
         </div>
     )
-} 
-
-export default function Projects() {
-    return (
-        <div className="max-w-[1000px] mx-auto my-10">
-            <h1 className="text-3xl font-bold">Projects</h1>
-            <p className="mt-4 text-lg">
-                Here are some of the projects I have worked on:
-            </p>
-            <ProjectContainer
-                title="Project 1"
-                description="This is a description of project 1."
-                img={["/path/to/image1.jpg", "/path/to/image2.jpg"]}
-                link="https://example.com/project1"
-                github="https://goithub.com/user/project1"
-                tags={["tag1", "tag2"]}
-            />
-        </div>
-    );
 }
-

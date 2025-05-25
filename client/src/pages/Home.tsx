@@ -34,7 +34,7 @@ export default function Home() {
 
     return (
         <div id="home">
-            <div className="mx-auto max-w-[1000px] w-fit flex flex-col items-center justify-center gap-10">
+            <div className="mx-auto max-w-[1000px] w-fit flex flex-col items-center justify-center gap-10 max-sm:p-10">
                 <h1 className="text-4xl uppercase">Hi, I am <strong className="text-accent-1">{profile.name}</strong></h1>
                 <p className="text-md">{profile.content.en}</p>
             </div>
