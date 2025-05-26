@@ -1,5 +1,7 @@
 import SkillGroup from "../components/Skills";
 
+import { ProjectData } from "../data/projects";
+
 export default function Home() {
 
     const profile = {
@@ -44,17 +46,32 @@ export default function Home() {
                     <h2 className="text-3xl uppercase">Skills</h2>
                     <div className="flex gap-10">
                         {Specialized.map((s) => (
-                            <div key={s.id} className="flex flex-col p-2 bg-primary-4 rounded-lg aspect-square w-[200px] relative hover:scale-120">
+                            <div key={s.id} className="flex flex-col p-2 bg-primary-4 rounded-lg aspect-square w-[200px] max-sm:w-[150px] relative hover:scale-120">
                                 <div className="absolute right-2 text-2xl text-gray-300">{s.id}</div>
-                                <h3 className="text-xl uppercase">{s.title}</h3>
+                                <h3 className="text-xl max-sm:text-lg font-bold uppercase">{s.title}</h3>
                                 <i className={`${s.icon} text-md text-accent-1`}></i>
-                                <p>{s.content}</p>
+                                <p className="max-sm:text-sm">{s.content}</p>
                             </div>
                         ))}
                     </div>
                 </div>
                  <div className="w-fit flex flex-col items-center justify-center gap-10">
                      <h2 className="text-3xl uppercase">Projects</h2>
+                     {ProjectData.map((project) => (
+                         <div key={project.name} className="flex flex-col gap-2 p-4 bg-primary-4 rounded-lg w-[300px] hover:scale-105 transition-transform">
+                             <h3 className="text-lg font-bold uppercase">{project.name}</h3>
+                             <div className="flex gap-2 mt-2">
+                                 <a href={project.link} target="_blank" rel="noopener noreferrer" className="text-accent-1 hover:underline">
+                                     <i className="bi bi-link-45deg"></i> View
+                                 </a>
+                                 {project.github && (
+                                     <a href={project.github} target="_blank" rel="noopener noreferrer" className="text-accent-1 hover:underline">
+                                         <i className="bi bi-github"></i> Github
+                                     </a>
+                                 )}
+                             </div>
+                         </div>
+                     ))}
                 </div>
             </div>
         </div>
