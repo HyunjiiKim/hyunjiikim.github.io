@@ -31,13 +31,13 @@ const ProjectContainer = ({ id, name, summary, coverImg }: IProjectData) => {
     }
 
     return (
-        <Link to={`/projects/${id}`} className="block bg-primary-4 p-4 my-2 rounded-lg hover:bg-primary-4/30 transition">
-            <div className="flex">
+        <Link to={`/projects/${id}`} className="block bg-primary-4 p-4 my-2 rounded-lg hover:bg-primary-4/30 transition text-ellipsis wrap-anywhere hover:scale-105 shadow-lg">
+            <div className="flex ">
                 <div id="imgContainer" className="w-[150px] h-[150px] aspect-square flex items-center justify-center mr-4">
                     <img src={coverImg} alt={name} />
                 </div>
-                <div id="TextImage">
-                    <h2 className="text-2xl font-bold max-sm:text-lg wrap">{name}</h2>
+                <div id="TextImage" className="text-balance">
+                    <h2 className="text-2xl font-bold max-sm:text-lg ">{name}</h2>
                     <p className="text-xs">{summary}</p>
                 </div>
             </div>
@@ -48,17 +48,26 @@ const ProjectContainer = ({ id, name, summary, coverImg }: IProjectData) => {
 
 const ProjectPage = ({ name, summary, role, description, img, usedSkills, link, github, startDate, endDate }: IProjectData) => {
     return (
-        <div className="max-w-[1000px] mx-auto p-10">
+        <div className="max-w-[1000px] mx-auto p-10 flex flex-col gap-4">
             <h1 className="font-bold text-center text-4xl">{name}</h1>
-            <div className="text-sm">
-                {summary}
-            </div>
             <div>
-                <p>Role : {role}</p>
-                {endDate && (
-                    <p>{startDate} - {endDate}</p>
-                )}
+                {role && (
+                    <div className="flex">
+                        <h3 className="text-xl font-bold">Role</h3>
+                        {role.map((r, index) => (
+                            <div key={index} className="px-2 py-1 rounded-full bg-accent-1 text-sm text-white w-fit capitalize ml-2">
+                                {r}
+                            </div>
+                        ))}
+                    </div>
+                )
+                }
             </div>
+            {endDate && (
+                <p className="text-sm text-gray-500">
+                    <i className="bi bi-calendar3" />&nbsp;{startDate} - {endDate}
+                </p>
+            )}
             <div id="link-group" className="flex gap-4">
                 {link && (
                     <div>
@@ -69,12 +78,17 @@ const ProjectPage = ({ name, summary, role, description, img, usedSkills, link, 
                 )}
                 {github && (
                     <div>
-                         <Link to={github} className="hover:text-primary-2">
+                        <Link to={github} className="hover:text-primary-2">
                             <i className="bi bi-github" />&nbsp;Github
                         </Link>
                     </div>
                 )}
             </div>
+            <div className="text-sm">
+                {summary}
+            </div>
+
+
             <p>{description}</p>
             <div>
                 <h3 className="text-xl font-bold">Skills</h3>
