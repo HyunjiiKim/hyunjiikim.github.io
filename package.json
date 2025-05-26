@@ -1,0 +1,34 @@
+{
+  "name": "hyunjiikim.github.io",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently \"npm run dev --workspace=client\" \"npm run start:dev --workspace=server\""
+  },
+  "dependencies": {
+    "@lexical/react": "^0.31.1",
+    "@nestjs/typeorm": "^11.0.0",
+    "concurrently": "^9.1.2",
+    "lexical": "^0.31.1",
+    "mysql2": "^3.14.1",
+    "react-markdown": "^10.1.0",
+    "typeorm": "^0.3.24"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HyunjiiKim/hyunjiikim.github.io.git"
+  },
+  "keywords": [],
+  "author": "Hyunji Kim",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HyunjiiKim/hyunjiikim.github.io/issues"
+  },
+  "homepage": "https://github.com/HyunjiiKim/hyunjiikim.github.io#readme",
+  "description": "",
+  "private": true,
+  "workspaces": [
+    "client",
+    "server"
+  ]
+}
