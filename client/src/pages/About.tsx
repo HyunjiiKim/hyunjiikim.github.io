@@ -36,14 +36,13 @@ export default function About() {
       "PHP", "R", "Docker", "Git", "GitHub", "Figma",
     ],
     softSkill: [
-      "Agile", "Lean Startup", "Lean Thinking", "Pair Programming",
-      "Scrum", "Kanban", "UX Design", "UI Design", "Web Design",
+      "Problem Solving", "Communication", "Teamwork", "Adaptability", "Critical Thinking"
     ]
   }
 
   return (
     <div id="about" className="max-w-[1000px] my-10 mx-auto">
-      <div id="section1" className="flex justify-between items-center w-[640px] mx-auto gap-5">
+      <div id="resume" className="flex items-start w-[640px] mx-auto gap-5 max-sm:flex-col max-sm:w-full max-sm: p-10">
         <div id="Left" className="flex flex-col gap-5 justify-center w-fit">
           <div className="aspect-square bg-accent-1 w-full">
             <img src={ProfilePhoto} alt="Hyunji Kim" className="w-full h-full object-cover" />
@@ -65,10 +64,18 @@ export default function About() {
             ))}
           </div>
           <div id="skillsContainer" className="bg-primary-4/20 p-2">
-            <h3 className="text-lg font-bold">Skills</h3>
-            <ul>
+            <h3 className="text-lg font-bold"> Hard Skills</h3>
+            <div className="flex flex-wrap gap-1">
               {Skills.hardSkill.map((items) => (
-                <li>{items}</li>
+                <p className="text-xs px-2 py-1 rounded-full bg-accent-1 text-white">{items}</p>
+              ))}
+            </div>
+          </div>
+          <div id="skillsContainer" className="bg-primary-4/20 p-2">
+            <h3 className="text-lg font-bold"> Soft Skills</h3>
+            <ul className="list-disc pl-5 text-xs">
+              {Skills.softSkill.map((items) => (
+                <li className="text-sm">{items}</li>
               ))}
             </ul>
           </div>
@@ -79,12 +86,13 @@ export default function About() {
             <h3 className="text-md font-bold text-gray-400">Full Stack Developer</h3>
           </div>
           <div id="description">
-            <p className="text-xs">I'd like to come true what I've imagined. Code Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc laoreet augue faucibus finibus interdum. Suspendisse at laoreet purus, at semper risus. Integer sed massa euismod lacus porttitor molestie vel eget enim. Nunc porttitor est sed sapien rhoncus posuere. Quisque ut pretium mi. Quisque pulvinar rhoncus leo quis ultricies. Aliquam erat volutpat. Vestibulum fermentum ipsum sed augue iaculis tincidunt. Nunc accumsan porta libero, sit amet mattis leo. Nunc id massa quis quam dapibus suscipit. Nunc pharetra diam non risus hendrerit, quis vestibulum nunc egestas. Proin vel elit sapien. Donec placerat elementum est quis efficitur.</p>
+            <p className="text-xs">Currently building and migrating my tech blog to a custom platform I designed and developed myself. The project reflects my hands-on approach to problem-solving, my curiosity in exploring how things work behind the scenes, and my desire to document and share what I learn along the way. It's an evolving space where I express my development journey and embody the mindset I work by: dream it, build it.</p>
           </div>
           {/* Experience  */}
           <div id="Exprience" className="flex flex-col gap-4">
             <h2 className="text-2xl capitalize font-bold">
               <i className="bi bi-suitcase-lg-fill"></i>
+              &nbsp;
               experience
             </h2>
             <hr />
@@ -111,6 +119,7 @@ export default function About() {
           <div id="Projects" className="flex flex-col gap-4">
             <h2 className="text-2xl capitalize font-bold">
               <i className="bi bi-laptop"></i>
+              &nbsp;
               projects
             </h2>
             <hr />
@@ -128,6 +137,7 @@ export default function About() {
           <div id="Education" className="flex flex-col gap-4">
             <h2 className="text-2xl capitalize font-bold">
               <i className="bi bi-mortarboard-fill"></i>
+              &nbsp;
               Education
             </h2>
             <hr />

@@ -118,6 +118,34 @@ export default function Nav() {
                   {item.name}
                 </NavLink>
               ))}
+              {isBlog && (
+                <div className="mt-4 flex flex-col gap-4 justify-center text-xs">
+                  {StudyCategory.map(c => (
+                    <NavLink
+                      key={c.path}
+                      to={c.path}
+                      className={menuLink}
+                      end={c.path === "/blog"}
+                    >
+                      {c.name}
+                    </NavLink>
+                  ))}
+                </div>
+              )}
+              {isProject && (
+                <div className="mt-4 flex flex-col gap-4 justify-center text-xs">
+                  {ProjectCategory.map(c => (
+                    <NavLink
+                      key={c.path}
+                      to={c.path}
+                      className={menuLink}
+                      end={c.path === "/projects"}
+                    >
+                      {c.name}
+                    </NavLink>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
         )}

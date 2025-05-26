@@ -23,19 +23,26 @@ export function ProjectDetail() {
     return <ProjectPage {...project} />;
 }
 
-const ProjectContainer = ({ name, summary, coverImg }: IProjectData) => {
+const ProjectContainer = ({ id, name, summary, coverImg }: IProjectData) => {
+
+    // summary should be under 200 characters
+    if (typeof summary === "string" && summary.length > 200) {
+        summary = summary.slice(0, 200) + '...';
+    }
+
     return (
-        <div className="bg-primary-4/20 p-6 my-4 rounded-lg">
+        <Link to={`/projects/${id}`} className="block bg-primary-4 p-4 my-2 rounded-lg hover:bg-primary-4/30 transition">
             <div className="flex">
-                <div id="imgContainer">
+                <div id="imgContainer" className="w-[150px] h-[150px] aspect-square flex items-center justify-center mr-4">
                     <img src={coverImg} alt={name} />
                 </div>
                 <div id="TextImage">
-                    <p>{summary}</p>
+                    <h2 className="text-2xl font-bold max-sm:text-lg wrap">{name}</h2>
+                    <p className="text-xs">{summary}</p>
                 </div>
             </div>
 
-        </div>
+        </Link>
     );
 };
 
