@@ -1,7 +1,5 @@
 import SkillGroup from "../components/Skills";
 
-import { ProjectData } from "../data/projects";
-
 export default function Home() {
 
     const profile = {
@@ -13,6 +11,27 @@ export default function Home() {
         }
     }
 
+    const Specialized = [
+        {
+            id: "01",
+            title: "Frontend",
+            icon: "bi bi-code-slash",
+            content: "HTML, CSS, JavaScript, TypeScript, React, Redux, Tailwind CSS"
+        },
+        {
+            id: "02",
+            title: "Backend",
+            icon: "bi bi-code-slash",
+            content: "Node.js, Express, NestJS, MongoDB, PostgreSQL, MySQL"
+        },
+        {
+            id: "03",
+            title: "Ui/UX",
+            icon: "bi bi-display",
+            content: "Figma, Tailwind CSS, UX Design, UI Design"
+        }
+    ]
+
     return (
         <div id="home">
             <div className="mx-auto max-w-[1000px] w-fit flex flex-col items-center justify-center gap-10 max-sm:p-10">
@@ -20,18 +39,22 @@ export default function Home() {
                 <p className="text-md">{profile.content.en}</p>
             </div>
             <SkillGroup />
-            <div className="mx-auto max-w-[1000px] w-fit flex flex-col items-center justify-center gap-10 max-sm:p-10">
-                 <div className="w-fit flex flex-col items-center justify-center gap-10">
-                     <h2 className="text-3xl uppercase">Projects</h2>
-                     <div className="flex flex-col">
-                        {ProjectData.map((project) => (
-                            <div key={project.id} className="flex flex-col p-2 bg-primary-4 hover:bg-primary-1 hover:text-white rounded-lg mb-4 shadow-lg hover:scale-105 transition-transform">
-                                <h3 className="text-xl uppercase ">{project.name}</h3>
-                                <p>{project.description}</p>
-                                <a href={project.link} target="_blank" rel="noopener noreferrer" className="text-accent-1">View Project</a>
+            <div className="mx-auto max-w-[1000px] flex flex-col gap-20 items-center justify-center">
+                <div className="w-fit flex flex-col items-center justify-center gap-10">
+                    <h2 className="text-3xl uppercase">Skills</h2>
+                    <div className="flex gap-10">
+                        {Specialized.map((s) => (
+                            <div key={s.id} className="flex flex-col p-2 bg-primary-4 rounded-lg aspect-square w-[200px] relative hover:scale-120">
+                                <div className="absolute right-2 text-2xl text-gray-300">{s.id}</div>
+                                <h3 className="text-xl uppercase">{s.title}</h3>
+                                <i className={`${s.icon} text-md text-accent-1`}></i>
+                                <p>{s.content}</p>
                             </div>
                         ))}
-                     </div>
+                    </div>
+                </div>
+                 <div className="w-fit flex flex-col items-center justify-center gap-10">
+                     <h2 className="text-3xl uppercase">Projects</h2>
                 </div>
             </div>
         </div>

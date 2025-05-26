@@ -3,7 +3,7 @@ import { Link } from "react-router";
 import { EducationData } from "../data/resume";
 import { ProjectData } from "../data/projects";
 
-import ProfilePhoto from "../../public/favicon.png";
+import ProfilePhoto from "../assets/favicon.png";
 
 export default function About() {
   const Info = [

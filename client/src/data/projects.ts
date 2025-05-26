@@ -1,4 +1,4 @@
-import favicon from "../../public/favicon.png";
+import favicon from "../assets/favicon.png";
 
 export interface IProjectData {
     id: string;

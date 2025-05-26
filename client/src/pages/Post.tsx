@@ -1,4 +1,5 @@
 import { useParams, Navigate } from "react-router";
+
 import type { Article } from "../data/article";
 import { articles } from "../data/article";
 
@@ -14,11 +15,11 @@ export default function Post({ title, date, content }: PostProps) {
   );
 }
 
-export function PostPage(){
-  const {id} = useParams<{id: string}>();
-  const article = articles.find(a=>a.id === Number(id));
+export function PostPage() {
+  const { id } = useParams<{ id: string }>();
+  const article = articles.find(a => a.id === Number(id));
 
-  return(
+  return (
     <div className="max-w-[1000px] mx-auto my-10">
       {article ? (
         <Post {...article} />
