@@ -44,7 +44,7 @@ export default function Home() {
             <div className="mx-auto max-w-[1000px] flex flex-col gap-20 items-center justify-center">
                 <div className="w-fit flex flex-col items-center justify-center gap-10">
                     <h2 className="text-3xl uppercase">Skills</h2>
-                    <div className="flex gap-10">
+                    <div className="flex gap-10 max-sm: w-full flex-wrap justify-center">
                         {Specialized.map((s) => (
                             <div key={s.id} className="flex flex-col p-2 bg-primary-4 rounded-lg aspect-square w-[200px] max-sm:w-[150px] relative hover:scale-120">
                                 <div className="absolute right-2 text-2xl text-gray-300">{s.id}</div>

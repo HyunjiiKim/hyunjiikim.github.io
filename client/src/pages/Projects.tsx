@@ -72,7 +72,7 @@ const ProjectPage = ({ name, summary, role, description, img, usedSkills, link, 
                 {link && (
                     <div>
                         <Link to={link} className="hover:text-primary-2">
-                            <i className="bi bi-link" />&nbsp;View
+                            <i className="bi bi-link-45deg" />&nbsp;View
                         </Link>
                     </div>
                 )}
